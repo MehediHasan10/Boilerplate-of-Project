@@ -45,10 +45,17 @@ const createToken = (id) => {
 //Route and Controller Actions
 
 //@route  -  GET /
-//@desc   -  a route to the home page.
+//@desc   -  a route to home page.
 //@access -  public
 router.get("/", (req, res) => {
     res.render("pages/index");
+});
+
+//@route  -  GET /
+//@desc   -  a route to dashboard page.
+//@access -  private
+router.get("/dashboard", (req, res) => {
+    res.render("pages/dashboard");
 });
 
 //Auth Routes
