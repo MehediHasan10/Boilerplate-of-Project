@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const {checkUser} = require("../middleware/authMiddleware");
 
 //Reference of express module
 const app = express();
@@ -23,6 +24,9 @@ db.on("open", () => console.log("DB Connection Successfull"));
 //view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+//Checking the user
+app.get("*", checkUser);
 
 //Route handler
 const indexRouter = require('./routes/router');
